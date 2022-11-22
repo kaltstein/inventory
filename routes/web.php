@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//EMPLOYEES
+Route::get('/employee', [\App\Http\Controllers\EmployeeController::class, 'index'])->name('employee');
+Route::get('/employee/list', [\App\Http\Controllers\EmployeeController::class, 'list'])->name('employee.list');
+Route::get('/employee/details/{id}', [\App\Http\Controllers\EmployeeController::class, 'show'])->name('employee.details');
+
+//HARDWARES
+Route::get('/hardwares', [\App\Http\Controllers\HardwareController::class, 'index'])->name('hardware');
+Route::get('/hardware/list', [\App\Http\Controllers\HardwareController::class, 'list'])->name('hardware.list');
+
+//SOFTWARES
+//HARDWARES
+Route::get('/softwares', [\App\Http\Controllers\SoftwareController::class, 'index'])->name('software');
+Route::get('/softwares/list', [\App\Http\Controllers\SoftwareController::class, 'list'])->name('software.list');

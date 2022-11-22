@@ -11,16 +11,26 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    protected $connection = 'mysql2';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'department_id',
+        'team_id',
         'name',
+        'role',
+        'frame',
+        'profile_path',
+        'cover_path',
+        'hired_at',
+        'status',
         'email',
+        'corporate_email',
         'password',
+        'created_at'
     ];
 
     /**
@@ -41,4 +51,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(related: Team::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(related: Department::class);
+    }
+
+    public function hardwares()
+    {
+        return $this->setConnection('mysql2')->hasMany(related: Hardware::class);
+    }
 }
