@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hardware;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HardwareController extends Controller
 {
@@ -22,7 +23,8 @@ class HardwareController extends Controller
 
         // return Http::dd()->get('http://10.134.30.27/portal/public/user/list/api');
 
-        return view('hardware.hardware');
+        $users = User::all();
+        return view('hardware.hardware', compact(['users']));
     }
 
 
@@ -31,9 +33,29 @@ class HardwareController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+
+        Hardware::create([
+            'user_id' => $request->user_id,
+            'name' => $request->name,
+            'asset_no' => $request->asset_no,
+            'brand' => $request->brand,
+            'specs' => $request->specs,
+            'supplier' => $request->supplier,
+            'serial_no' => $request->serial_no,
+            'service_tag' => $request->service_tag,
+            'FA_control_no' => $request->FA_control_no,
+            'date_released' => $request->date_released,
+        ]);
+
+
+        return redirect()->back()->with('success', $request->name . ' has been added');
     }
 
     /**
@@ -64,9 +86,9 @@ class HardwareController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        return Hardware::findOrFail($request->id);
     }
 
     /**
@@ -76,9 +98,32 @@ class HardwareController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $request->validate([
+            'edit_name' => 'required',
+        ]);
+
+        $hardware = Hardware::findOrFail($request->edit_id);
+
+        if ($request->edit_user_id != '' and $request->edit_status == 'inactive') {
+            return redirect()->back()->with('error', 'You cannot set device to inactive while being used. You must unassign the current user first.');
+        }
+        $hardware->asset_no = $request->edit_asset_no;
+        $hardware->user_id = $request->edit_user_id;
+        $hardware->name = $request->edit_name;
+        $hardware->brand = $request->edit_brand;
+        $hardware->specs = $request->edit_specs;
+        $hardware->supplier = $request->edit_supplier;
+        $hardware->serial_no = $request->edit_serial_no;
+        $hardware->service_tag = $request->edit_service_tag;
+        $hardware->FA_control_no = $request->edit_FA_control_no;
+        $hardware->date_released = $request->edit_date_released;
+        $hardware->status = $request->edit_status;
+        $hardware->save();
+
+        return redirect()->back()->with('success', $request->edit_name . ' has been edited');
     }
 
     /**

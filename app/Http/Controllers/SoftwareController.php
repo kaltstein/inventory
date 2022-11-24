@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Software;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\UserSoftware;
 
 class SoftwareController extends Controller
 {
@@ -20,7 +22,8 @@ class SoftwareController extends Controller
     public function index()
     {
 
-        return view('software.software');
+        $users = User::all();
+        return view('software.software', compact(['users']));
     }
 
 
@@ -29,9 +32,26 @@ class SoftwareController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+
+        Software::create([
+            'name' => $request->name,
+            'FA_control_no' => $request->FA_control_no,
+            'stocks' => $request->stocks,
+            'supplier' => $request->supplier,
+            'contract_no' => $request->contract_no,
+            'remarks' => $request->remarks,
+            'expiry_date' => $request->expiry_date,
+        ]);
+
+
+        return redirect()->back()->with('success', $request->name . ' has been added');
     }
 
     /**
@@ -51,9 +71,12 @@ class SoftwareController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $users = User::all();
+
+        $software_details = Software::findOrFail($request->id);
+        return view('software.details', compact(['software_details', 'users']));
     }
 
     /**
@@ -96,8 +119,39 @@ class SoftwareController extends Controller
         if ($request->ajax()) {
             $query = Software::select('*');
             return datatables()->eloquent($query)
+                ->editColumn('contract_no', function (Software $software) {
 
+                    return '<a  class="text-blue-500 font-bold underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->contract_no . '</a>';
+                })
+                ->editColumn('current_users', function (Software $software) {
+                    $return = "";
+                    foreach ($software->user_softwares as $user_softwares) {
+
+                        $return .= "<div>" . $user_softwares->current_users->name . "<br></div>";
+                    }
+                    $software->current_user_count = count($software->user_softwares);
+                    return $return;
+                })
+                ->editColumn('spare', function (Software $software) {
+                    return $software->stocks - $software->current_user_count;
+                })
+                ->rawColumns(['contract_no', 'current_users'])
                 ->toJson();
         }
+    }
+
+    public function assign(Request $request)
+    {
+        $software = Software::findOrFail($request->id);
+        $software->user_softwares()->delete();
+
+        foreach ($request->user_id as $user_id) {
+            UserSoftware::create([
+                'user_id' => $user_id,
+                'software_id' => $request->id,
+
+            ]);
+        }
+        return redirect()->back()->with('success', $software->name . ' has been updated');
     }
 }

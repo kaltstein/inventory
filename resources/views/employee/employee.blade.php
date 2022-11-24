@@ -18,7 +18,7 @@
 
 
             <table id="employees_tbl"
-                class=" hover  w-full text-sm hover:cursor-pointer   text-gray-500 shadow-md row-border no-wrap"
+                class=" hover w-full text-xs md:text-sm hover:cursor-pointer   text-gray-500 shadow-md row-border no-wrap"
                 width="100%">
                 <thead class="text-white bg-gray-700"></thead>
             </table>
@@ -30,13 +30,13 @@
             $('.employee-nav').addClass('text-blue-500');
             var employees_tbl = $('#employees_tbl').DataTable({
 
-                // scrollX: true,
-                // scrollY: true,
+                scrollX: true,
+                scrollY: true,
                 ajax: "{{ route('employee.list') }}",
                 // colReorder: true,
 
-                processing: true,
-                serverSide: true,
+                // processing: true,
+                // serverSide: true,
 
                 "lengthChange": false,
                 "pageLength": 15,

@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->setConnection('mysql2')->hasMany(related: Hardware::class);
     }
+    public function softwares()
+    {
+
+        return $this->hasMany(related: UserSoftware::class)->with('software');
+    }
 }

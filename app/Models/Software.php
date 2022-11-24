@@ -21,10 +21,9 @@ class Software extends Model
 
     ];
 
-    // public function current_user()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id')->with('department')->with('team');
-    // }
 
-
+    public function user_softwares()
+    {
+        return $this->hasMany(UserSoftware::class)->with('current_users');
+    }
 }

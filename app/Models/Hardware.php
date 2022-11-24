@@ -13,6 +13,7 @@ class Hardware extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
         'asset_no',
         'brand',
         'specs',

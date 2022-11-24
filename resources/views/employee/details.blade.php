@@ -39,7 +39,8 @@
                     </button>
 
                     @foreach ($user_details->hardwares as $hardware)
-                        <div class="py-2 px-4 w-full cursor-pointer hover:bg-gray-100 hover:text-blue-600">
+                        <div
+                            class="py-2 px-4 w-full cursor-pointer hover:bg-gray-100 hover:text-blue-600 border-b border-gray-200">
                             @if ($hardware->name == 'MONITOR')
                                 <i class="fa-solid fa-computer-mouse"></i>
                             @elseif($hardware->name == 'MOUSE')
@@ -67,12 +68,20 @@
                         class="py-2 px-4 w-full font-medium text-center text-white bg-gray-700 software-lg border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                         <i class="fa-brands fa-windows"></i> SOFTWARES
                     </button>
-                    @foreach ($user_details->hardwares as $hardware)
-                        <button type="button"
-                            class="py-2 px-4 w-full font-medium text-left border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                            {{ $hardware->name }}
-                        </button>
+
+
+                    @foreach ($user_details->softwares as $software)
+                        <div
+                            class="py-2 px-4 w-full cursor-pointer hover:bg-gray-100 hover:text-blue-600 border-b border-gray-200 ">
+
+                            {{ $software->software->name }}
+                            <br>
+                            <small> Valid Until:
+                                {{ \Carbon\Carbon::parse($software->software->expiry_date)->format('m/d/Y') }}</small>
+
+                        </div>
                     @endforeach
+
                 </div>
             </div>
 
