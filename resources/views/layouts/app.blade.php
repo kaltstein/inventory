@@ -72,7 +72,7 @@
 
                                 <li class=" text-red-700">
                                     <a href="{{ route('logout') }}"
-                                        class=" software-nav block py-2 pl-3 pr-4  rounded hover:font-bold hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                                        class=" logout-nav block py-2 pl-3 pr-4  rounded hover:font-bold hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i
                                             class="fa-solid fa-power-off"></i> {{ __('LOGOUT') }}</a>
