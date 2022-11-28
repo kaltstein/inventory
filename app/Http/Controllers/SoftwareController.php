@@ -85,9 +85,9 @@ class SoftwareController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        return Software::findOrFail($request->id);
     }
 
     /**
@@ -97,9 +97,26 @@ class SoftwareController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'edit_name' => 'required',
+        ]);
+
+        $software = Software::findOrFail($request->edit_id);
+
+
+
+        $software->name = $request->edit_name;
+        $software->FA_control_no = $request->edit_FA_control_no;
+        $software->stocks = $request->edit_stocks;
+        $software->supplier = $request->edit_supplier;
+        $software->contract_no = $request->edit_contract_no;
+        $software->remarks = $request->edit_remarks;
+        $software->expiry_date = $request->edit_expiry_date;
+        $software->save();
+
+        return redirect()->back()->with('success', $request->edit_name . ' has been edited');
     }
 
     /**
@@ -121,7 +138,7 @@ class SoftwareController extends Controller
             return datatables()->eloquent($query)
                 ->editColumn('contract_no', function (Software $software) {
 
-                    return '<a  class="text-blue-500 font-bold underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->contract_no . '</a>';
+                    return '<a  class="text-blue-500 font-bold hover:underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->contract_no . '</a>';
                 })
                 ->editColumn('current_users', function (Software $software) {
                     $return = "";
@@ -146,11 +163,13 @@ class SoftwareController extends Controller
         $software->user_softwares()->delete();
 
         foreach ($request->user_id as $user_id) {
-            UserSoftware::create([
-                'user_id' => $user_id,
-                'software_id' => $request->id,
+            if ($user_id) {
+                UserSoftware::create([
+                    'user_id' => $user_id,
+                    'software_id' => $request->id,
 
-            ]);
+                ]);
+            }
         }
         return redirect()->back()->with('success', $software->name . ' has been updated');
     }

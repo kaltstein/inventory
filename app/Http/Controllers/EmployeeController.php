@@ -109,7 +109,7 @@ class EmployeeController extends Controller
             return datatables()->eloquent($query)
                 ->editColumn('name', function (User $user) {
 
-                    return '<a  class="text-blue-500 font-bold underline" href="' . route('employee.details', $user->id) . '" target="_blank"><i class="fa-solid fa-eye"></i> ' . $user->name . '</a>';
+                    return '<a  class="text-blue-500 font-bold hover:underline" href="' . route('employee.details', $user->id) . '" target="_blank"><i class="fa-solid fa-eye"></i> ' . $user->name . '</a>';
                 })
                 ->rawColumns(['name'])
                 ->toJson();

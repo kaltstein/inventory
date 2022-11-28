@@ -93,9 +93,11 @@
                         render: function(data, type) {
 
                             if (data == 'Active') {
-                                return "<span class = 'text-green-500 ' >• " + data + "</span>";
+                                return "<span class = 'text-green-500 capitalize font-bold' >• " +
+                                    data + "</span>";
                             } else {
-                                return "<span class = 'text-gray-500' >• " + data + "</span>";
+                                return "<span class = 'text-gray-500 capitalize font-bold' >• " +
+                                    data + "</span>";
                             }
 
                         }

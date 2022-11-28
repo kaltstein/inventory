@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('software', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('FA_control_no');
-            $table->integer('stocks');
-            $table->string('supplier');
-            $table->string('contract_no');
-            $table->date('expiry_date');
-            $table->string('remarks');
+            $table->string('FA_control_no')->nullable();
+            $table->integer('stocks')->nullable();
+            $table->string('supplier')->nullable();
+            $table->string('contract_no')->nullable();
+            $table->date('expiry_date')->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

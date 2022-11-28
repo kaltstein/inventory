@@ -47,7 +47,7 @@
                 </button>
             </div>
 
-            <table id="hardwares_tbl"
+            <table id="macs"
                 class=" hover  w-full text-xs md:text-sm  hover:cursor-pointer  compact  text-gray-500 shadow-md row-border no-wrap"
                 width="100%">
                 <thead class="text-white bg-gray-700"></thead>
@@ -65,7 +65,7 @@
             class="inline-flex items-center mb-6 text-base font-semibold text-gray-500  dark:text-gray-400">
             <i class="fa-solid fa-plus"></i>&nbsp;CREATE
         </h5>
-        <form class="mb-6 " method="POST" action="{{ route('hardware.create') }}">
+        <form class="mb-6 " method="POST" action="{{ route('mac.create') }}">
             @csrf
             <div class="mb-6">
                 <label for="role_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">User
@@ -83,18 +83,7 @@
                     </p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name
-                </label>
-                <input type="text" id="name" name="name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="eg. Monitor" autocomplete="off" required>
-                @error('name')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
+
             <div class="mb-6">
                 <label for="asset_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Asset#
                 </label>
@@ -107,67 +96,7 @@
                     </p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Brand
-                </label>
-                <input type="text" id="brand" name="brand"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Brand Name" autocomplete="off">
-                @error('brand')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Specifications
-                </label>
-                <textarea type="text" id="specs" name="specs"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Specifications" autocomplete="off"></textarea>
-                @error('specs')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="supplier" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Supplier
-                </label>
-                <input type="text" id="supplier" name="supplier"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Supplier" autocomplete="off">
-                @error('supplier')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="serial_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Serial#
-                </label>
-                <input type="text" id="serial_no" name="serial_no"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Serial No." autocomplete="off">
-                @error('serial_no')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="service_tag" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Service
-                    Tag
-                </label>
-                <input type="text" id="service_tag" name="service_tag"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Service Tag" autocomplete="off">
-                @error('service_tag')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
+
             <div class="mb-6">
                 <label for="FA_control_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">FA
                     Control#
@@ -181,6 +110,90 @@
                     </p>
                 @enderror
             </div>
+
+            <div class="mb-6">
+                <label for="specs" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Specifications
+                </label>
+                <textarea type="text" id="specs" name="specs"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Specifications" autocomplete="off"></textarea>
+                @error('specs')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Branch
+                </label>
+                <select type="text" id="branch" name="branch"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="BGC">BGC</option>
+                    <option value="PAMPANGA">PAMPANGA</option>
+                </select>
+                @error('branch')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="warranty_check" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Warranty
+                    Check
+                </label>
+                <input type="date" id="warranty_check" name="warranty_check"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Warranty Check" autocomplete="off">
+                @error('warranty_check')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="warranty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Warranty
+                </label>
+                <input type="text" id="warranty" name="warranty"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Warranty Check" autocomplete="off">
+                @error('warranty')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="supplier" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Supplier
+                </label>
+                <input type="text" id="supplier" name="supplier"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Supplier" autocomplete="off">
+                @error('supplier')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+
+
+            <div class="mb-6">
+                <label for="system_sn" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">System S/N
+
+                </label>
+                <input type="text" id="system_sn" name="system_sn"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Service Tag" autocomplete="off">
+                @error('system_sn')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
             <div class="mb-6">
                 <label for="FA_control_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date
                     Released
@@ -194,6 +207,27 @@
                     </p>
                 @enderror
             </div>
+
+
+            <div class="mb-6">
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Status
+                </label>
+                <select type="text" id="status" name="status"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="active">ACTIVE</option>
+                    <option value="inactive">INACTIVE</option>
+                    <option value="defective">DEFECTIVE</option>
+                    <option value="sold">SOLD</option>
+                    <option value="for sale">FOR SALE</option>
+                    <option value="phased-out">PHASED-OUT</option>
+                </select>
+                @error('status')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
             <button type="submit"
                 class="text-white justify-center flex items-center bg-green-700 hover:bg-green-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 <i class="fa-solid fa-plus"></i>&nbsp;CREATE</button>
@@ -207,7 +241,7 @@
             class="inline-flex items-center mb-6 text-base font-semibold text-gray-500  dark:text-gray-400">
             <i class="fa-solid fa-pen"></i>&nbsp;EDIT
         </h5>
-        <form class="mb-6 " method="POST" action="{{ route('hardware.update') }}">
+        <form class="mb-6 " method="POST" action="{{ route('mac.update') }}">
             @csrf
             <div class="mb-6">
                 <input type="hidden" name="edit_id" id="edit_id">
@@ -220,48 +254,41 @@
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                 </select>
-                @error('category_id')
+                @error('edit_user_id')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="edit_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name
-                </label>
-                <input type="text" id="edit_name" name="edit_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="eg. Monitor" autocomplete="off" required>
-                @error('name')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
+
+
             <div class="mb-6">
                 <label for="edit_asset_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Asset#
                 </label>
                 <input type="text" id="edit_asset_no" name="edit_asset_no"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Asset No." autocomplete="off">
-                @error('asset_no')
+                @error('edit_asset_no')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
+
             <div class="mb-6">
-                <label for="edit_brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Brand
+                <label for="edit_FA_control_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">FA
+                    Control#
                 </label>
-                <input type="text" id="edit_brand" name="edit_brand"
+                <input type="text" id="edit_FA_control_no" name="edit_FA_control_no"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Brand Name" autocomplete="off">
-                @error('brand')
+                    placeholder="Service Tag" autocomplete="off">
+                @error('edit_FA_control_no')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
+
             <div class="mb-6">
                 <label for="edit_specs"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Specifications
@@ -275,6 +302,50 @@
                     </p>
                 @enderror
             </div>
+
+            <div class="mb-6">
+                <label for="edit_branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Branch
+                </label>
+                <select type="text" id="edit_branch" name="edit_branch"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="BGC">BGC</option>
+                    <option value="PAMPANGA">PAMPANGA</option>
+                </select>
+                @error('edit_branch')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="edit_warranty_check"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Warranty
+                    Check
+                </label>
+                <input type="date" id="edit_warranty_check" name="edit_warranty_check"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Warranty Check" autocomplete="off">
+                @error('edit_warranty_check')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="edit_warranty"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Warranty
+                </label>
+                <input type="text" id="edit_warranty" name="edit_warranty"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Warranty Check" autocomplete="off">
+                @error('edit_warranty')
+                    <p class="text-red-500 text-xs italic mt-4">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
             <div class="mb-6">
                 <label for="edit_supplier"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Supplier
@@ -282,52 +353,30 @@
                 <input type="text" id="edit_supplier" name="edit_supplier"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Supplier" autocomplete="off">
-                @error('supplier')
+                @error('edit_supplier')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
+
+
+
             <div class="mb-6">
-                <label for="edit_serial_no"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Serial#
+                <label for="edit_system_sn" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">System
+                    S/N
+
                 </label>
-                <input type="text" id="edit_serial_no" name="edit_serial_no"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Serial No." autocomplete="off">
-                @error('serial_no')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="edit_service_tag"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Service
-                    Tag
-                </label>
-                <input type="text" id="edit_service_tag" name="edit_service_tag"
+                <input type="text" id="edit_system_sn" name="edit_system_sn"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Service Tag" autocomplete="off">
-                @error('service_tag')
+                @error('edit_system_sn')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="edit_FA_control_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">FA
-                    Control#
-                </label>
-                <input type="text" id="edit_FA_control_no" name="edit_FA_control_no"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Service Tag" autocomplete="off">
-                @error('FA_control_no')
-                    <p class="text-red-500 text-xs italic mt-4">
-                        {{ $message }}
-                    </p>
-                @enderror
-            </div>
+
             <div class="mb-6">
                 <label for="edit_date_released"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date
@@ -335,29 +384,34 @@
                 </label>
                 <input type="date" id="edit_date_released" name="edit_date_released"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    autocomplete="off">
-                @error('date_released')
+                    placeholder="Service Tag" autocomplete="off">
+                @error('edit_date_released')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
+
+
             <div class="mb-6">
-                <label for="edit_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Status
+                <label for="edit_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Status
                 </label>
                 <select type="text" id="edit_status" name="edit_status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-
+                    <option value="active">ACTIVE</option>
+                    <option value="inactive">INACTIVE</option>
+                    <option value="defective">DEFECTIVE</option>
+                    <option value="sold">SOLD</option>
+                    <option value="for sale">FOR SALE</option>
+                    <option value="phased-out">PHASED-OUT</option>
                 </select>
-                @error('status')
+                @error('edit_status')
                     <p class="text-red-500 text-xs italic mt-4">
                         {{ $message }}
                     </p>
                 @enderror
             </div>
+
             <button type="submit"
                 class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 <i class="fa-solid fa-pen"></i>&nbsp;UPDATE</button>
@@ -366,12 +420,12 @@
 
     <script>
         $(document).ready(function() {
-            $('.hardware-nav').addClass('text-blue-500');
-            var hardwares_tbl = $('#hardwares_tbl').DataTable({
+            $('.mac-nav').addClass('text-blue-500');
+            var macs = $('#macs').DataTable({
 
                 scrollX: true,
                 scrollY: true,
-                ajax: "{{ route('hardware.list') }}",
+                ajax: "{{ route('mac.list') }}",
                 // colReorder: true,
 
                 // processing: true,
@@ -426,41 +480,45 @@
                         }
                     },
                     {
-                        data: 'name',
-                        title: 'NAME',
-                        render: function(data, type) {
-                            return "<span class='font-bold text-gray-700 '> " + data +
-                                "</span>"
-                        }
-                    },
-
-                    {
-                        data: 'brand',
-                        title: 'BRAND'
+                        data: 'FA_control_no',
+                        title: 'FA CONTROL#',
                     },
                     {
                         data: 'specs',
                         title: 'SPECS',
                     },
                     {
+                        data: 'branch',
+                        title: 'BRANCH'
+                    },
+                    {
+                        data: 'warranty_check',
+                        title: 'WARRANTY CHECK',
+                        className: 'dt-right',
+                        render: function(data, type) {
+
+                            if (data != null) {
+                                return moment(data).format('MMM DD, YYYY');
+                            } else {
+                                return "";
+                            }
+
+                        }
+                    },
+                    {
+                        data: 'warranty',
+                        title: 'WARRANTY',
+                    },
+                    {
                         data: 'supplier',
                         title: 'SUPPLIER',
                     },
+
                     {
-                        data: 'serial_no',
-                        title: 'SERIAL#',
-                        className: 'dt-right'
+                        data: 'system_sn',
+                        title: 'SYSTEM S/N',
                     },
-                    {
-                        data: 'service_tag',
-                        title: 'SERVICE TAG',
-                        className: 'dt-right'
-                    },
-                    {
-                        data: 'FA_control_no',
-                        title: 'FA CONTROL#',
-                        className: 'dt-right'
-                    },
+
 
                     {
                         data: 'date_released',
@@ -478,11 +536,19 @@
                     },
                     {
                         data: 'status',
-                        title: 'Status',
+                        title: 'STATUS',
                         render: function(data, type) {
 
                             if (data == 'active') {
                                 return "<span class='text-green-700 capitalize font-bold'>• " +
+                                    data +
+                                    "</span>"
+                            } else if (data == 'sold') {
+                                return "<span class='text-yellow-700 capitalize font-bold'>• " +
+                                    data +
+                                    "</span>"
+                            } else if (data == 'for sale') {
+                                return "<span class='text-orange-700 capitalize font-bold'>• " +
                                     data +
                                     "</span>"
                             } else {
@@ -493,20 +559,7 @@
                         }
 
                     },
-                    {
-                        data: 'updated_at',
-                        title: 'UPDATED AT',
-                        className: 'text-right',
-                        render: function(data, type) {
 
-                            if (data != null) {
-                                return moment(data).format('MMM DD, YYYY hh:mm a');
-                            } else {
-                                return "";
-                            }
-
-                        }
-                    },
 
                 ],
                 "columnDefs": [{
@@ -519,7 +572,7 @@
             $('#create_drawer_btn').click(function(e) {
                 $("#drawer_create").removeClass('hidden');
             });
-            $('#hardwares_tbl').on('click', 'tbody tr', function() {
+            $('#macs').on('click', 'tbody tr', function() {
 
 
 
@@ -537,7 +590,7 @@
                 drawer.toggle();
                 $("#drawer_edit").removeClass('hidden');
                 $.ajax({
-                    url: "{{ route('hardware.edit', '') }}" + "/" + hardwares_tbl.row(this).data()
+                    url: "{{ route('mac.edit', '') }}" + "/" + macs.row(this).data()
                         .id,
                     type: "GET",
                     success: function(response) {
@@ -545,13 +598,16 @@
                         $("#edit_id").val(response.id);
                         $("#edit_user_id").val(response.user_id);
                         $("#edit_asset_no").val(response.asset_no);
-                        $("#edit_name").val(response.name);
-                        $("#edit_brand").val(response.brand);
-                        $("#edit_specs").val(response.specs);
-                        $("#edit_supplier").val(response.supplier);
-                        $("#edit_serial_no").val(response.serial_no);
-                        $("#edit_service_tag").val(response.service_tag);
                         $("#edit_FA_control_no").val(response.FA_control_no);
+                        $("#edit_specs").val(response.specs);
+                        $("#edit_branch").val(response.branch);
+
+                        $("#edit_warranty_check").val(response.warranty_check);
+
+                        $("#edit_warranty").val(response.warranty);
+                        $("#edit_supplier").val(response.supplier);
+                        $("#edit_system_sn").val(response.system_sn);
+
                         $("#edit_date_released").val(response.date_released);
                         $("#edit_status").val(response.status);
                     }
