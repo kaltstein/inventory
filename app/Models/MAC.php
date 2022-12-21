@@ -15,6 +15,7 @@ class MAC extends Model
 
 
     protected $fillable = [
+        'user_id',
         'asset_no',
         'FA_control_no',
         'specs',

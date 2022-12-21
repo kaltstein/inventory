@@ -21,7 +21,7 @@ class MACController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $users = User::orderBy('name')->get();
         return view('mac.mac', compact(['users']));
     }
 
@@ -34,6 +34,7 @@ class MACController extends Controller
     public function create(Request $request)
     {
 
+        error_log($request->user_id);
         $request->validate([
             'asset_no' => 'required',
         ]);
@@ -109,7 +110,7 @@ class MACController extends Controller
 
 
 
-
+        $mac->user_id = $request->edit_user_id;
         $mac->asset_no = $request->edit_asset_no;
         $mac->FA_control_no = $request->edit_FA_control_no;
         $mac->specs = $request->edit_specs;

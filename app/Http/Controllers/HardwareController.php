@@ -23,7 +23,7 @@ class HardwareController extends Controller
 
         // return Http::dd()->get('http://10.134.30.27/portal/public/user/list/api');
 
-        $users = User::all();
+        $users = User::orderBy('name')->get();
         return view('hardware.hardware', compact(['users']));
     }
 
