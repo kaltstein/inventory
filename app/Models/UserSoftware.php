@@ -14,7 +14,7 @@ class UserSoftware extends Model
     protected $fillable = [
         'user_id',
         'software_id',
-
+        'remarks',
     ];
 
 

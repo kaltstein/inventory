@@ -136,9 +136,9 @@ class SoftwareController extends Controller
         if ($request->ajax()) {
             $query = Software::select('*');
             return datatables()->eloquent($query)
-                ->editColumn('contract_no', function (Software $software) {
+                ->editColumn('id', function (Software $software) {
 
-                    return '<a  class="text-blue-500 font-bold hover:underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->contract_no . '</a>';
+                    return '<a  class="text-blue-500 font-bold hover:underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->id . '</a>';
                 })
                 ->editColumn('current_users', function (Software $software) {
                     $return = "";
@@ -152,7 +152,7 @@ class SoftwareController extends Controller
                 ->editColumn('spare', function (Software $software) {
                     return $software->stocks - $software->current_user_count;
                 })
-                ->rawColumns(['contract_no', 'current_users'])
+                ->rawColumns(['id', 'current_users'])
                 ->toJson();
         }
     }
@@ -162,11 +162,12 @@ class SoftwareController extends Controller
         $software = Software::findOrFail($request->id);
         $software->user_softwares()->delete();
 
-        foreach ($request->user_id as $user_id) {
+        foreach ($request->user_id as $index => $user_id) {
             if ($user_id) {
                 UserSoftware::create([
                     'user_id' => $user_id,
                     'software_id' => $request->id,
+                    'remarks' => $request->remarks[$index],
 
                 ]);
             }
