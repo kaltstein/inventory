@@ -22,7 +22,7 @@ class SoftwareController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $users = User::orderBy('name')->get();
         return view('software.software', compact(['users']));
     }
 
@@ -73,7 +73,7 @@ class SoftwareController extends Controller
      */
     public function show(Request $request)
     {
-        $users = User::all();
+        $users = User::orderBy('name')->get();
 
         $software_details = Software::findOrFail($request->id);
         return view('software.details', compact(['software_details', 'users']));

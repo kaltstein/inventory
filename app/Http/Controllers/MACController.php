@@ -76,7 +76,7 @@ class MACController extends Controller
      */
     public function show(Request $request)
     {
-        $users = User::all();
+        $users = User::orderBy('name')->get();
 
         $mac_details = MAC::findOrFail($request->id);
         return view('mac.details', compact(['mac_details', 'users']));
