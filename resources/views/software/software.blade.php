@@ -314,14 +314,14 @@
                                 "</span>"
                         }
                     },
-                    {
-                        data: 'current_users',
-                        title: 'CURRENT USERS',
-                        render: function(data, type) {
-                            return "<span class='font-bold text-gray-700 '> " + data +
-                                "</span>"
-                        }
-                    },
+                    // {
+                    //     data: 'current_users',
+                    //     title: 'CURRENT USERS',
+                    //     render: function(data, type) {
+                    //         return "<span class='font-bold text-gray-700 '> " + data +
+                    //             "</span>"
+                    //     }
+                    // },
                     {
                         data: 'FA_control_no',
                         title: 'FA CONTROL#',
