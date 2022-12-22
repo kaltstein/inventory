@@ -294,7 +294,7 @@
                 // serverSide: true,
 
                 "lengthChange": false,
-                "pageLength": 15,
+                "pageLength": 10,
                 columns: [{
                         data: 'id',
                         title: 'ID',
