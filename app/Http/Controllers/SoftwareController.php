@@ -22,7 +22,7 @@ class SoftwareController extends Controller
     public function index()
     {
 
-        $users = User::orderBy('name')->get();
+        $users = User::all();
         return view('software.software', compact(['users']));
     }
 
@@ -48,7 +48,6 @@ class SoftwareController extends Controller
             'contract_no' => $request->contract_no,
             'remarks' => $request->remarks,
             'expiry_date' => $request->expiry_date,
-            'license_type' => $request->license_type,
         ]);
 
 
@@ -74,7 +73,7 @@ class SoftwareController extends Controller
      */
     public function show(Request $request)
     {
-        $users = User::orderBy('name')->get();
+        $users = User::all();
 
         $software_details = Software::findOrFail($request->id);
         return view('software.details', compact(['software_details', 'users']));
@@ -115,10 +114,6 @@ class SoftwareController extends Controller
         $software->contract_no = $request->edit_contract_no;
         $software->remarks = $request->edit_remarks;
         $software->expiry_date = $request->edit_expiry_date;
-        $software->license_type = $request->edit_license_type;
-
-
-
         $software->save();
 
         return redirect()->back()->with('success', $request->edit_name . ' has been edited');
