@@ -16,6 +16,7 @@ class Software extends Model
         'supplier',
         'contract_no',
         'expiry_date',
+        'license_type',
         'remarks',
 
 
