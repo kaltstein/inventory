@@ -66,8 +66,10 @@
                         <div
                             class="py-2 px-4 w-full cursor-pointer hover:bg-gray-100 hover:text-blue-600 border-b border-gray-200 ">
 
+                            <small class="mx-2"> {{ $user_softwares->current_users->team->name }}</small>
+
                             <select type="text" id="user_id" name="user_id[]"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="">None</option>
                                 @foreach ($users as $user)
                                     @if ($user_softwares->current_users->id == $user->id)
@@ -84,8 +86,9 @@
                             @enderror
 
 
-                            <small class="mx-2"> {{ $user_softwares->current_users->team->name }}</small>
-
+                            <textarea type="text" id="remarks" name="remarks[]"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Remarks" autocomplete="off">{{ $user_softwares->remarks }}</textarea>
                         </div>
                     @endforeach
 
@@ -109,6 +112,12 @@
                                         {{ $message }}
                                     </p>
                                 @enderror
+                                <label for="remarks"
+                                    class="block mb-2 text-sm font-medium text-green-900 dark:text-gray-300">Remarks
+                                </label>
+                                <textarea type="text" id="remarks" name="remarks[]"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Remarks" autocomplete="off"></textarea>
                             </div>
                         </div>
                     @endfor

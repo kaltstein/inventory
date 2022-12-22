@@ -130,22 +130,6 @@
                             </p>
                         @enderror
                     </div>
-                    <div class="mb-6">
-                        <label for="supplier"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">License Type
-                        </label>
-                        <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            name="license_type" id="license_type">
-                            <option value="Network">Network</option>
-                            <option value="Softkey">Softkey</option>
-                        </select>
-                        @error('supplier')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
 
                     <div class="mb-6">
                         <label for="remarks"
@@ -262,24 +246,6 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="supplier"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">License Type
-                        </label>
-                        <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            name="edit_license_type" id="edit_license_type">
-                            <option value="Network">Network</option>
-                            <option value="Softkey">Softkey</option>
-                        </select>
-                        @error('edit_supplier')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-
-                    <div class="mb-6">
                         <label for="edit_remarks"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remarks
                         </label>
@@ -385,10 +351,7 @@
                         data: 'supplier',
                         title: 'SUPPLIER',
                     },
-                    {
-                        data: 'license_type',
-                        title: 'LICENSE TYPE',
-                    },
+
                     {
                         data: 'remarks',
                         title: 'REMARKS',
@@ -464,7 +427,6 @@
                         $("#edit_contract_no").val(response.contract_no);
                         $("#edit_remarks").val(response.remarks);
                         $("#edit_expiry_date").val(response.expiry_date);
-                        $("#edit_license_type").val(response.license_type);
 
 
                     }

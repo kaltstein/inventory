@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('software', function (Blueprint $table) {
-            $table->string('license_type')->nullable();
+        Schema::table('user_softwares', function (Blueprint $table) {
+            $table->string('remarks')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('software', function (Blueprint $table) {
+        Schema::table('user_softwares', function (Blueprint $table) {
             //
         });
     }
