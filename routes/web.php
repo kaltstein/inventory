@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('login');
 });
 Auth::routes();
 
@@ -51,3 +51,8 @@ Route::get('/mac/edit/{id}', [\App\Http\Controllers\MACController::class, 'edit'
 Route::get('/mac/details/{id}', [\App\Http\Controllers\MACController::class, 'show'])->name('mac.details');
 // Route::get('/hardware/destroy/{id}', [\App\Http\Controllers\HardwareController::class, 'destroy'])->name('hardware.destroy');
 Route::post('/mac/update', [\App\Http\Controllers\MACController::class, 'update'])->name('mac.update');
+
+
+//MAC
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/list', [\App\Http\Controllers\DashboardController::class, 'list'])->name('dashboard.list');

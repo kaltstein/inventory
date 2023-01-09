@@ -214,12 +214,18 @@
                 </label>
                 <select type="text" id="status" name="status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="active">ACTIVE</option>
-                    <option value="inactive">INACTIVE</option>
-                    <option value="defective">DEFECTIVE</option>
-                    <option value="sold">SOLD</option>
-                    <option value="for sale">FOR SALE</option>
-                    <option value="phased-out">PHASED-OUT</option>
+                    <option value="VACANT">VACANT</option>
+                    <option value="OCCUPIED">OCCUPIED</option>
+                    <option value="TEMPORARY OCCUPIED">TEMPORARY OCCUPIED</option>
+                    <option value="DEFECTIVE">DEFECTIVE</option>
+                    <option value="FOR RESET/CLEANUP">FOR RESET/CLEANUP</option>
+                    <option value="CHANGE MACHINE">CHANGE MACHINE</option>
+                    <option value="WAITING FOR DELIVERY">WAITING FOR DELIVERY</option>
+                    <option value="RESERVED">RESERVED</option>
+                    <option value="INSTALLING">INSTALLING</option>
+                    <option value="SOLD OUT">SOLD OUT</option>
+                    <option value="FOR SALE">FOR SALE</option>
+                    <option value="PHASED-OUT">PHASED-OUT</option>
                 </select>
                 @error('status')
                     <p class="text-red-500 text-xs italic mt-4">
@@ -398,12 +404,18 @@
                 </label>
                 <select type="text" id="edit_status" name="edit_status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="active">ACTIVE</option>
-                    <option value="inactive">INACTIVE</option>
-                    <option value="defective">DEFECTIVE</option>
-                    <option value="sold">SOLD</option>
-                    <option value="for sale">FOR SALE</option>
-                    <option value="phased-out">PHASED-OUT</option>
+                    <option value="VACANT">VACANT</option>
+                    <option value="OCCUPIED">OCCUPIED</option>
+                    <option value="TEMPORARY OCCUPIED">TEMPORARY OCCUPIED</option>
+                    <option value="DEFECTIVE">DEFECTIVE</option>
+                    <option value="FOR RESET/CLEANUP">FOR RESET/CLEANUP</option>
+                    <option value="CHANGE MACHINE">CHANGE MACHINE</option>
+                    <option value="WAITING FOR DELIVERY">WAITING FOR DELIVERY</option>
+                    <option value="RESERVED">RESERVED</option>
+                    <option value="INSTALLING">INSTALLING</option>
+                    <option value="SOLD OUT">SOLD OUT</option>
+                    <option value="FOR SALE">FOR SALE</option>
+                    <option value="PHASED-OUT">PHASED-OUT</option>
                 </select>
                 @error('edit_status')
                     <p class="text-red-500 text-xs italic mt-4">
@@ -539,21 +551,18 @@
                         title: 'STATUS',
                         render: function(data, type) {
 
-                            if (data == 'active') {
+                            if (data == 'OCCUPIED') {
+                                return "<span class='text-blue-700 capitalize font-bold'>• " +
+                                    data +
+                                    "</span>";
+                            } else if (data == 'VACANT') {
                                 return "<span class='text-green-700 capitalize font-bold'>• " +
                                     data +
-                                    "</span>"
-                            } else if (data == 'sold') {
-                                return "<span class='text-yellow-700 capitalize font-bold'>• " +
-                                    data +
-                                    "</span>"
-                            } else if (data == 'for sale') {
+                                    "</span>";
+                            } else {
                                 return "<span class='text-orange-700 capitalize font-bold'>• " +
                                     data +
-                                    "</span>"
-                            } else {
-                                return "<span class='text-red-700 capitalize font-bold'>• " + data +
-                                    "</span>"
+                                    "</span>";
                             }
 
                         }
