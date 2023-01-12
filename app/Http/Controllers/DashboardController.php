@@ -98,24 +98,31 @@ class DashboardController extends Controller
 
 
         if ($request->ajax()) {
+
+
+
             $query = Software::select(
                 'id',
                 'name',
                 Software::raw('SUM(stocks) as total_stocks')
 
-            )->groupBy('name');
+            )
+
+                ->groupBy('name');
 
             return datatables()->eloquent($query)
 
                 ->editColumn('total_users', function (Software $software) {
 
-                    $total_user = UserSoftware::select(UserSoftware::raw('COUNT(user_id) as total_users'))
-                        ->where('software_id', $software->id)->first();
-                    $software->total_user = $total_user->total_users;
-                    return  $software->total_user;
+                    $total_user = Software::select(Software::raw('COUNT(user_softwares.user_id) as total_users'))
+                        ->leftJoin('user_softwares',  'user_softwares.software_id', 'software.id')
+                        ->where('software.name', $software->name)->first();
+
+                    $software->total_users = $total_user->total_users;
+                    return  $software->total_users;
                 })
                 ->editColumn('spare', function (Software $software) {
-                    return $software->total_stocks -  $software->total_user;
+                    return $software->total_stocks -  $software->total_users;
                 })
                 ->rawColumns(['total_users', 'spare'])
                 ->toJson();
