@@ -13,18 +13,39 @@
 
 
             <header class="mb-6">
-                <ul class="">
-                    <li class="font-bold text-gray-700 pb-2">
+                <ul class="font-bold text-gray-700">
+                    <li class="  pb-2">
                         <i class="fa-solid fa-user-tie"></i>
                         {{ $user_details->name }}
                     </li>
-                    <li class="font-bold text-gray-700 pb-2">
+                    <li class="  pb-2">
                         <i class="fa-solid fa-building-user"></i>
                         {{ $user_details->department->name }}
                     </li>
-                    <li class="font-bold text-gray-700 pb-2">
+                    <li class="  pb-2">
                         <i class="fa-solid fa-people-group"></i>
                         {{ $user_details->team->name }}
+                    </li>
+                    <li class="  pb-2">
+
+                        <i class="fa-solid fa-square-envelope"></i>
+                        {{ $user_details->email_type }}
+                    </li>
+                    <li class="  pb-2">
+                        <i class="fa-solid fa-envelopes-bulk"></i>
+                        {{ $user_details->email_distribution }}
+                    </li>
+                    <li class="  pb-2">
+                        <i class="fa-solid fa-fingerprint"></i>
+                        {{ $user_details->biometric_id }}
+                    </li>
+                    <li class="  pb-2">
+                        <i class="fa-solid fa-print"></i>
+                        {{ $user_details->printer_id }}
+                    </li>
+                    <li class="  pb-2">
+                        <i class="fa-solid fa-border-all"></i>
+                        {{ $user_details->utm_type }}
                     </li>
                 </ul>
                 <hr>
