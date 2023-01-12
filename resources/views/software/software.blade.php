@@ -388,7 +388,7 @@
 
                 ],
                 "columnDefs": [{
-                    "targets": [1, 2],
+                    "targets": [],
                     "orderable": false
                 }]
             });

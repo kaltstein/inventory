@@ -140,19 +140,19 @@ class SoftwareController extends Controller
 
                     return '<a  class="text-blue-500 font-bold hover:underline" href="' . route('software.details', $software->id) . '" target="_blank"> ' . $software->name . '</a>';
                 })
-                ->editColumn('current_users', function (Software $software) {
-                    $return = "";
-                    foreach ($software->user_softwares as $user_softwares) {
+                // ->editColumn('current_users', function (Software $software) {
+                //     $return = "";
+                //     foreach ($software->user_softwares as $user_softwares) {
 
-                        $return .= "<div>" . $user_softwares->current_users->name . "<br></div>";
-                    }
-                    $software->current_user_count = count($software->user_softwares);
-                    return $return;
-                })
+                //         $return .= "<div>" . $user_softwares->current_users->name ?? 'None' . "<br></div>";
+                //     }
+                //     $software->current_user_count = count($software->user_softwares);
+                //     return $return;
+                // })
                 ->editColumn('spare', function (Software $software) {
                     return $software->stocks - $software->current_user_count;
                 })
-                ->rawColumns(['name', 'current_users'])
+                ->rawColumns(['name'])
                 ->toJson();
         }
     }

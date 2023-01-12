@@ -83,7 +83,7 @@
                     },
                     {
                         data: 'total_users',
-                        title: 'CURRENT USERS',
+                        title: 'TOTAL USERS',
                         className: 'dt-right',
                     },
                     {
