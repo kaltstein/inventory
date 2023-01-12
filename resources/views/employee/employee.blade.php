@@ -55,6 +55,10 @@
                         title: 'TEAM',
                     },
                     {
+                        data: 'role',
+                        title: 'ROLE',
+                    },
+                    {
                         data: 'name',
                         title: 'NAME'
 
@@ -62,16 +66,29 @@
                     },
                     {
                         data: 'email',
-                        title: 'GMAIL',
-                    },
-                    {
-                        data: 'corporate_email',
                         title: 'CORPORATE EMAIL',
                     },
                     {
-                        data: 'role',
-                        title: 'ROLE',
+                        data: 'utm_type',
+                        title: 'UTM TYPE',
                     },
+                    {
+                        data: 'email_type',
+                        title: 'EMAIL TYPE',
+                    },
+                    {
+                        data: 'email_distribution',
+                        title: 'EMAIL DISTRIBUTION',
+                    },
+                    {
+                        data: 'biometric_id',
+                        title: 'BIOMETRIC ID',
+                    },
+                    {
+                        data: 'printer_id',
+                        title: 'PRINTER ID',
+                    },
+
                     {
                         data: 'hired_at',
                         title: 'HIRED AT',
