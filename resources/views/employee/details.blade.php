@@ -53,7 +53,25 @@
 
             <div class="flex space-x-2 ">
                 <div
-                    class=" w-1/2 text-sm font-medium text-gray-900 bg-white software border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    class="w-1/3 text-sm font-medium text-gray-900 bg-white  border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <button aria-current="true" type="button"
+                        class="py-2 px-4 w-full font-medium text-center text-white bg-gray-700  cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
+                        <i class="fa-brands fa-windows"></i> MAC & WINDOWS
+                    </button>
+
+
+                    @foreach ($user_details->mac_cpu as $mac_cpu)
+                        <div class="py-2 px-4 w-full cursor-pointer hover:bg-gray-100 hover:text-blue-600  ">
+
+                            {{ $mac_cpu->asset_no }}
+                            <br>
+                            <small>{{ $mac_cpu->specs }}</small>
+                        </div>
+                    @endforeach
+
+                </div>
+                <div
+                    class=" w-1/3 text-sm font-medium text-gray-900 bg-white software border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <button aria-current="true" type="button"
                         class="text-center py-2 px-4 w-full font-medium  text-white bg-gray-700 software-lg border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                         <i class="fa-solid fa-desktop"></i> HARDWARE
@@ -84,7 +102,7 @@
 
                 </div>
                 <div
-                    class="w-1/2 text-sm font-medium text-gray-900 bg-white software border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    class="w-1/3 text-sm font-medium text-gray-900 bg-white software border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <button aria-current="true" type="button"
                         class="py-2 px-4 w-full font-medium text-center text-white bg-gray-700 software-lg border-b border-gray-200 cursor-pointer focus:outline-none dark:bg-gray-800 dark:border-gray-600">
                         <i class="fa-brands fa-windows"></i> SOFTWARES
@@ -104,6 +122,7 @@
                     @endforeach
 
                 </div>
+
             </div>
 
 

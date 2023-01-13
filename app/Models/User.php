@@ -70,4 +70,9 @@ class User extends Authenticatable
 
         return $this->hasMany(related: UserSoftware::class)->with('software');
     }
+    public function mac_cpu()
+    {
+
+        return $this->hasMany(related: MAC::class);
+    }
 }
